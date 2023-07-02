@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant browser
+    participant server
+    participant database
+
+    Note over browser: User enters text and clicks submit button
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server->>database: Store new note
+    activate database
+    database-->>server: Note stored successfully
+    deactivate database
+    server-->>browser: HTTP 302 Redirect
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: HTML document with updated notes
+    deactivate server
