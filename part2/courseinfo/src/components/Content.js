@@ -12,11 +12,7 @@ const Content = ({ parts }) => {
           />
         )
       })}
-      <Total 
-        sum={parts.reduce((accumulator, part) => {
-          return accumulator + part.exercises;
-        }, 0)}
-      />
+      <Total sum={parts.reduce((accumulator, part) => accumulator + part.exercises, 0)} />
     </>
   )
 }
