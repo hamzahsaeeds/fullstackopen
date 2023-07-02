@@ -1,4 +1,5 @@
 import Part from "./Part";
+import Total from "./Total";
 
 const Content = ({ parts }) => {
   return (
@@ -10,7 +11,12 @@ const Content = ({ parts }) => {
             part={part}
           />
         )
-      })}    
+      })}
+      <Total 
+        sum={parts.reduce((accumulator, part) => {
+          return accumulator + part.exercises;
+        }, 0)}
+      />
     </>
   )
 }
