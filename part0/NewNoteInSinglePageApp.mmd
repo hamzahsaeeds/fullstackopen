@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant browser
+    participant server
+    participant database
+
+    Note over browser: User enters text and clicks submit button
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    server->>database: Store new note
+    activate database
+    database-->>server: Note stored successfully
+    deactivate database
+    server-->>browser: Response indicating success/failure
+
+    Note right of browser: The JavaScript code updates the UI with the new note
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: Updated JSON data for notes
+    deactivate server
